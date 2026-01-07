@@ -1,0 +1,3 @@
+這是我的筆記文件。
+今天我在 Mac 上搭建了本地 LLM agent。
+資料夾裡有 notes.txt 和 project.txt。

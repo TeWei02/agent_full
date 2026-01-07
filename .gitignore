@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+llm-env/
+agent-env/
+*.egg-info/
+dist/
+build/
+
+# 敏感資訊
+.env
+*.key
+*_KEY*
+*.token
+
+# 資料
+*.pdf
+*.log
+task_report.md
+chroma_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Backup
+*_backup/
