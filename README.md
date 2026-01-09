@@ -218,3 +218,217 @@ STUST - 我的母校
 如果這個專案對你有幫助，請給個 Star！
 Built with ❤️ by TeWei
 Let's make AI accessible to everyone!
+4. `SETUP_GUIDE.md` - 完整設置指南
+
+```markdown
+# 🚀 AI Computer 完整設置指南
+
+## 📋 目錄
+
+1. [系統需求](#系統需求)
+2. [安裝 Ollama](#安裝-ollama)
+3. [下載模型](#下載模型)
+4. [安裝專案](#安裝專案)
+5. [配置](#配置)
+6. [運行](#運行)
+7. [常見問題](#常見問題)
+
+---
+
+## 系統需求
+
+### 最低配置
+CPU: 4 核心
+RAM: 8GB
+硬碟: 20GB 可用空間
+系統: Linux / macOS / Windows
+
+text
+
+### 推薦配置
+CPU: 8 核心
+RAM: 16GB
+硬碟: 50GB SSD
+GPU: NVIDIA GTX 1060+ (可選，加速推理)
+
+text
+
+---
+
+## 安裝 Ollama
+
+### macOS / Linux
+
+```bash
+# 一鍵安裝
+curl -fsSL https://ollama.com/install.sh | sh
+
+# 驗證安裝
+ollama --version
+Windows
+訪問 ollama.com/download
+
+下載 Windows 安裝包
+
+運行安裝程式
+
+完成後，Ollama 會在系統托盤運行
+
+下載模型
+推薦模型（按大小排序）
+bash
+# 小型（適合測試，1GB 以下）
+ollama pull tinyllama      # 637MB - 最快
+
+# 中型（推薦，2-4GB）
+ollama pull llama3.2        # 2GB - 推薦，質量好
+ollama pull phi             # 1.6GB - 微軟出品
+
+# 大型（高質量，需要好硬體）
+ollama pull mistral         # 4.1GB - 質量優秀
+ollama pull llama3.2:70b    # 39GB - 最強，接近 GPT-4
+
+# 程式碼專用
+ollama pull codellama       # 3.8GB - Meta 程式碼模型
+ollama pull deepseek-coder  # 3.8GB - 中文程式碼
+查看已安裝模型
+bash
+ollama list
+測試模型
+bash
+# 互動式對話
+ollama run llama3.2
+
+# 輸入 /bye 退出
+安裝專案
+1. 克隆倉庫
+bash
+git clone https://github.com/yourusername/ai-computer.git
+cd ai-computer
+2. 創建虛擬環境（推薦）
+bash
+# Python 虛擬環境
+python3 -m venv venv
+
+# 啟動虛擬環境
+# macOS/Linux:
+source venv/bin/activate
+
+# Windows:
+venv\Scripts\activate
+3. 安裝依賴
+bash
+# Python 依賴
+pip install -r requirements-free.txt
+
+# Go 工具（可選）
+cd tools/go/file_watcher && go build
+cd ../../..
+
+# Web UI（可選）
+cd web/frontend
+npm install
+cd ../..
+配置
+1. 複製配置文件
+bash
+cp config/settings.example.yaml config/settings.yaml
+2. 編輯配置
+text
+# config/settings.yaml
+
+brain:
+  provider: "ollama"
+  model: "llama3.2"  # 改成你下載的模型
+  
+memory:
+  database: "data/db/memory.db"
+3. 創建數據目錄
+bash
+mkdir -p data/db data/vector_db data/memory logs
+運行
+方式 1: CLI 模式（推薦新手）
+bash
+# 確保 Ollama 正在運行
+ollama serve &
+
+# 啟動 AI Computer
+python3 main.py
+方式 2: Web UI
+bash
+# 終端 1: 啟動後端
+python3 main.py
+
+# 終端 2: 啟動前端
+cd web/frontend
+npm run dev
+
+# 訪問 http://localhost:3000
+方式 3: Docker（最簡單）
+bash
+# 構建並運行
+docker-compose up -d
+
+# 訪問 http://localhost:3000
+常見問題
+Q: Ollama 啟動失敗
+bash
+# 檢查 Ollama 服務
+ps aux | grep ollama
+
+# 手動啟動
+ollama serve
+
+# 檢查端口
+lsof -i :11434
+Q: 模型下載太慢
+bash
+# 使用國內鏡像（如果在中國）
+export OLLAMA_HOST=https://mirror.ollama.com
+
+# 或者使用小模型先測試
+ollama pull tinyllama
+Q: 內存不足
+bash
+# 使用更小的模型
+ollama pull tinyllama  # 只需 637MB
+
+# 或調整 Ollama 配置
+export OLLAMA_MAX_LOADED_MODELS=1
+export OLLAMA_NUM_PARALLEL=1
+Q: GPU 加速
+bash
+# 檢查 NVIDIA GPU
+nvidia-smi
+
+# Ollama 會自動使用 GPU
+# 如果未使用，檢查 CUDA 安裝
+Q: 中文支持
+bash
+# 使用中文優化的模型
+ollama pull qwen          # 阿里巴巴中文模型
+ollama pull deepseek-coder  # 中文程式碼
+
+# 修改配置
+# config/settings.yaml
+brain:
+  model: "qwen"
+🎓 下一步
+設置完成後：
+
+✅ 閱讀 README.md
+
+✅ 嘗試範例任務
+
+✅ 探索工具功能
+
+✅ 加入開發！
+
+📞 需要幫助？
+GitHub Issues: 提交問題
+
+Email: your.email@example.com
+
+Discord: 加入社群
+
+祝你使用愉快！ 🚀
