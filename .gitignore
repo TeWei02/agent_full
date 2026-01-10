@@ -34,3 +34,7 @@ chroma_data/
 
 # Backup
 *_backup/
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
