@@ -1,0 +1,11 @@
+# Core AI / Agent
+groq>=0.10.0
+openai>=1.0.0
+
+# Local LLM & RAG
+ollama>=0.2.0
+llama-index>=0.10.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
