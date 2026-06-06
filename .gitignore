@@ -36,5 +36,10 @@ chroma_data/
 *_backup/
 
 
-#Ignore vscode AI rules
+# AI agent config files (auto-generated)
+CLAUDE.md
+AGENTS.md
+.cursorrules
+
+# Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
