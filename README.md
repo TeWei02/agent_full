@@ -1,131 +1,123 @@
 ```markdown
 # Agent Full — 全自動化 AI Agent 系統
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/your-username/agent_full?style=flat-square)
-![GitHub](https://img.shields.io/github/license/your-username/agent_full?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/your-username/agent_full)
+![GitHub license](https://img.shields.io/github/license/your-username/agent_full)
+![GitHub last commit](https://img.shields.io/github/last-commit/your-username/agent_full)
 ![GitHub stars](https://img.shields.io/github/stars/your-username/agent_full?style=social)
-![GitHub last commit](https://img.shields.io/github/last-commit/your-username/agent_full?style=flat-square)
-![Python Version](https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square)
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
+![Status](https://img.shields.io/badge/status-active-brightgreen)
 
-**Agent Full** 是一個專為開發者與企業設計的全自動化 AI Agent 系統。它能夠自主規劃、執行任務、調用工具與 API，並根據環境反饋即時調整策略，實現真正的「設定即運行」。
-
----
-
-## ✨ Features
-
-- **全自動任務排程** — 支援依賴圖與條件觸發，無需人工干預。
-- **多模型支援** — 兼容 OpenAI、Anthropic、本地 LLM 等多種後端。
-- **工具擴充框架** — 內建 Plugin 系統，可快速整合自訂 API 或腳本。
-- **即時監控面板** — 提供 Web UI 即時查看 Agent 狀態、日誌與執行紀錄。
-- **安全沙箱** — 所有 Agent 操作皆在隔離環境中執行，保障系統安全。
-- **輕量部署** — 支援 Docker 一鍵啟動，亦可在邊緣裝置運行。
+**Agent Full** 是一套專為內容創作者與知識工作者設計的全自動化 AI Agent 系統。  
+它能夠根據排程自動產出高品質的技術文章與商業分析內容，並直接整合至您的發布流程。
 
 ---
 
-## 📦 Installation
+## Features
+
+- 🤖 **全自動化排程** — 設定時間週期，系統自動執行產出任務
+- 📝 **多領域內容生成** — 支援技術（tech）與商業（biz）兩大類別
+- 🧠 **AI 驅動分析** — 基於最新語言模型，產出深度且具洞察力的文章
+- 🗂️ **結構化輸出** — 檔案自動命名為 `YYYYMMDD_類別_標題.md` 格式
+- 🔌 **易於擴展** — 可透過 Plugin 架構新增內容類型或輸出目標
+
+---
+
+## Installation
 
 ### 前置需求
 
 - Python 3.10 或更高版本
-- pip（建議使用虛擬環境）
-- （可選）Docker
+- Git
+- 有效的 OpenAI API 金鑰（或相容 LLM 服務）
 
-### 快速安裝
+### 安裝步驟
 
 ```bash
-# 克隆倉庫
+# 1. 克隆倉庫
 git clone https://github.com/your-username/agent_full.git
 cd agent_full
 
-# 建立虛擬環境（建議）
+# 2. 建立虛擬環境（建議）
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 安裝依賴
+# 3. 安裝依賴套件
 pip install -r requirements.txt
-```
 
-### Docker 部署
-
-```bash
-docker build -t agent_full .
-docker run -d -p 8000:8000 agent_full
+# 4. 設定環境變數
+cp .env.example .env
+# 編輯 .env 檔案，填入你的 API 金鑰與設定
 ```
 
 ---
 
-## 🚀 Usage
+## Usage
 
-### 基本啟動
+### 基本執行
 
-```bash
-python run.py --config config/default.yaml
-```
-
-### 設定 Agent
-
-編輯 `config/agents/my_agent.yaml`：
-
-```yaml
-name: "Research Agent"
-model: "gpt-4o"
-tools:
-  - web_search
-  - file_writer
-schedule:
-  cron: "0 9 * * 1-5"
-```
-
-### 啟動監控面板
+啟動系統並執行一次內容產出：
 
 ```bash
-python webui.py
+python run_agent.py --mode single
 ```
 
-打開瀏覽器前往 `http://localhost:8000` 即可查看 Agent 狀態。
+### 排程模式
+
+設定每日定時執行（例如每天早上 8:00）：
+
+```bash
+python run_agent.py --mode schedule --time "08:00"
+```
+
+### 自訂內容類型
+
+僅產出技術類文章：
+
+```bash
+python run_agent.py --category tech
+```
+
+### 輸出範例
+
+執行後，系統會自動在 `output/` 目錄下產生結構化 Markdown 檔案：
+
+```
+output/
+├── tech_20260617_Linux命令行技巧：提升效率的10個組.md
+└── biz_20260617_訂閱制商業模式深度解析.md
+```
 
 ---
 
-## 🧩 專案結構
+## 今日產出內容範例
+
+| 類別 | 檔案名稱 | 主題 |
+|------|----------|------|
+| 🖥️ Tech | `20260617_Linux命令行技巧：提升效率的10個組.md` | Linux 命令列實用技巧 |
+| 💼 Biz  | `20260617_訂閱制商業模式深度解析.md` | 訂閱制商業模式分析 |
+
+---
+
+## Project Structure
 
 ```
 agent_full/
-├── agents/          # Agent 定義與邏輯
-├── tools/           # 工具與 Plugin
-├── core/            # 排程引擎與狀態管理
-├── webui/           # 監控面板
-├── config/          # 設定檔範例
-├── tests/           # 單元測試
-├── docs/            # 文件
-├── Dockerfile
-└── requirements.txt
+├── agents/             # AI Agent 核心邏輯
+├── config/             # 設定檔與環境變數
+├── output/             # 產出內容存放目錄
+├── plugins/            # 擴充插件
+├── templates/          # 提示詞模板
+├── run_agent.py        # 主程式入口
+├── requirements.txt    # Python 依賴
+└── README.md           # 本文件
 ```
 
 ---
 
-## 🤝 貢獻指南
+## License
 
-歡迎任何形式的貢獻！請先閱讀 [CONTRIBUTING.md](CONTRIBUTING.md) 了解開發規範。
-
-1. Fork 此專案
-2. 建立你的功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交變更 (`git commit -m 'Add some amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 開啟 Pull Request
-
----
-
-## 📄 License
-
-本專案採用 **MIT License**。詳細條款請參閱 [LICENSE](LICENSE) 檔案。
-
----
-
-## 🙏 致謝
-
-- 感謝所有開源 LLM 與工具社群
-- 感謝早期使用者的反饋與建議
+本專案採用 **MIT License** — 詳細條款請參閱 [LICENSE](LICENSE) 檔案。
 
 ---
 
