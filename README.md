@@ -39,6 +39,16 @@ agent_full/
 └── .github/workflows/      # CI 設定
 ```
 
+## 相關專案
+
+本倉庫屬於 Agent 研究系列，三者分工如下：
+
+| 倉庫 | 定位 |
+| --- | --- |
+| [Modern_agent](https://github.com/TeWei02/Modern_agent) | 框架層設計：工具使用、情境記憶管理、多模型整合 |
+| [UNIVERSAAL_AGENT](https://github.com/TeWei02/UNIVERSAAL_AGENT) | 通用型架構：跨領域任務規劃、工具整合與知識管理 |
+| [agent_full](https://github.com/TeWei02/agent_full) | 落地實驗：macOS 本地模型與 RAG 的實作紀錄 |
+
 ## License
 
 MIT © [Te-Wei Ko](https://github.com/TeWei02)
