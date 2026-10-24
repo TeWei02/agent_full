@@ -38,18 +38,24 @@ agent_full/
 ├── data/
 │   ├── notes.txt           # 實驗筆記
 │   └── project.txt         # 專案規劃
+├── docs/
+│   ├── modern-agent/       # 框架層設計（原 Modern_agent，已歸檔）
+│   └── universaal-agent/   # 通用型架構（原 UNIVERSAAL_AGENT，已歸檔）
+├── experiments/            # 概念驗證與實驗（預留）
 └── .github/workflows/      # CI 設定
 ```
 
-## 相關專案
+## 規劃倉庫已歸檔，內容合併於此
 
-本倉庫屬於 Agent 研究系列，三者分工如下：
+Agent 研究系列的規劃倉庫 **Modern_agent**（框架層設計：工具使用、情境記憶管理、多模型整合）與 **UNIVERSAAL_AGENT**（通用型架構：跨領域任務規劃、工具整合與知識管理）已於 2026-10-24 歸檔（archived），其規劃文檔已合併至本倉庫 `docs/` 目錄並保留來源標註。
 
-| 倉庫 | 定位 |
-| --- | --- |
-| [Modern_agent](https://github.com/TeWei02/Modern_agent) | 框架層設計：工具使用、情境記憶管理、多模型整合 |
-| [UNIVERSAAL_AGENT](https://github.com/TeWei02/UNIVERSAAL_AGENT) | 通用型架構：跨領域任務規劃、工具整合與知識管理 |
-| [agent_full](https://github.com/TeWei02/agent_full) | 落地實驗：macOS 本地模型與 RAG 的實作紀錄 |
+| 原倉庫 | 定位 | 合併位置 |
+| --- | --- | --- |
+| Modern_agent（已歸檔） | 框架層設計：工具使用、情境記憶管理、多模型整合 | [docs/modern-agent/](docs/modern-agent/) |
+| UNIVERSAAL_AGENT（已歸檔） | 通用型架構：跨領域任務規劃、工具整合與知識管理 | [docs/universaal-agent/](docs/universaal-agent/) |
+| agent_full（本倉庫） | 落地實驗：macOS 本地模型與 RAG 的實作紀錄 | — |
+
+本倉庫現作為 Agent 研究系列的單一主倉庫，涵蓋落地實驗、架構規劃與框架設計三個面向。
 
 ## License
 
